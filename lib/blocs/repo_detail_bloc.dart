@@ -1,8 +1,6 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:github_viewer/models/revision.dart';
-import 'package:github_viewer/repository/repository..dart';
+import 'package:github_viewer/repository/repository.dart';
 import 'package:meta/meta.dart';
 
 part 'new_repo_event.dart';

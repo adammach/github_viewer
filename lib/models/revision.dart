@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:github_viewer/models/author.dart';
 import 'package:github_viewer/models/commit.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'revision.g.dart';
 

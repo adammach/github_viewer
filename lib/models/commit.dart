@@ -1,5 +1,5 @@
 import 'package:github_viewer/models/author.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 part 'commit.g.dart';
@@ -15,6 +15,5 @@ class Commit extends HiveObject {
 
   factory Commit.fromJson(Map<String, dynamic> json) => _$CommitFromJson(json);
 
-  /// Connect the generated [_$PersonToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$CommitToJson(this);
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_viewer/blocs/saved_repos_bloc.dart';
-import 'package:github_viewer/repository/repository..dart';
+import 'package:github_viewer/repository/repository.dart';
 import 'package:github_viewer/view/loader.dart';
 import 'package:github_viewer/view/repo_details_page.dart';
 
@@ -16,8 +15,6 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: const Text("Gihub repo viewer"),
       ),
       body: BlocBuilder<SavedReposBloc, SavedReposState>(

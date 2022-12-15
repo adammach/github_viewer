@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_viewer/blocs/repo_detail_bloc.dart';
 import 'package:github_viewer/models/revision.dart';
-import 'package:github_viewer/repository/repository..dart';
+import 'package:github_viewer/repository/repository.dart';
 import 'package:github_viewer/view/loader.dart';
 import 'package:share_plus/share_plus.dart';
 

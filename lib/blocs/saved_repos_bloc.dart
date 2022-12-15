@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:github_viewer/models/saved_repo.dart';
-import 'package:github_viewer/repository/repository..dart';
+import 'package:github_viewer/repository/repository.dart';
 import 'package:meta/meta.dart';
 
 part 'saved_repos_event.dart';

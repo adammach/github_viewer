@@ -1,7 +1,7 @@
 import 'package:chopper/chopper.dart';
 import 'package:github_viewer/models/revision.dart';
 import 'package:github_viewer/repository/chopper_service.dart';
-import 'package:github_viewer/repository/repository..dart';
+import 'package:github_viewer/repository/repository.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class RestRepository implements Repository {
