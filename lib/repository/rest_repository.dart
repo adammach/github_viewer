@@ -16,14 +16,19 @@ class RestRepository implements Repository {
   @override
   Future<List<Revision>> fetchCommits(String repoName, String owner) async {
     final githubService = _chopperClient.getService<GithubService>();
-    final response = await githubService.getRevisions(owner, repoName);
-    if (response.isSuccessful) {
-      List<Revision> revisions = List<Revision>.from(response.body?.map((element) => Revision.fromJson(element)));
-      await saveRepo(repoName, revisions);
-      return revisions;
-    } else {
-      throw Exception("Cannot read repository");
+    try {
+      final response = await githubService.getRevisions(owner, repoName);
+      if (response.isSuccessful) {
+        List<Revision> revisions = List<Revision>.from(response.body?.map((element) => Revision.fromJson(element)));
+        await saveRepo(repoName, revisions);
+        return revisions;
+      } else {
+        throw RepoReaderException("Cannot read repository");
+      }
+    } catch (e) {
+      throw RepoReaderException("Something wrong has happened :(");
     }
+
   }
 
   @override
@@ -49,5 +54,9 @@ class RestRepository implements Repository {
     List<Revision> revisions = reposBox.get(repoName).map<Revision>((e) => e as Revision).toList();
     return revisions;
   }
+}
 
+class RepoReaderException implements Exception {
+  String cause;
+  RepoReaderException(this.cause);
 }

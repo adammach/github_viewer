@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:github_viewer/blocs/repo_detail_bloc.dart';
@@ -66,6 +65,11 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
                 if (state is RepoMissing) {
                   _showNewRepoDialog(context);
                 }
+                if (state is RepoDetailsError) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(state.message),
+                  ));
+                }
               },
               builder: (context, state) {
                 if (state is RepoDetailsInitial) {
@@ -75,6 +79,8 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
                   return _buildCommitsList(state.revisions);
                 } else if (state is RepoDetailsLoading) {
                   return _showProgress();
+                } else if (state is RepoDetailsError) {
+                  return _buildEmptyCommits();
                 } else {
                   return _buildEmptyCommits();
                 }
@@ -84,7 +90,7 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
 
   Widget _buildEmptyCommits() {
     return const Center(
-      child: Text ("No commits to show."),
+      child: Text("No commits to show."),
     );
   }
 
@@ -151,7 +157,8 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
   }
 
   _shareCommits(List<Revision> checkedRevisions) {
-    List<String> shareMessage = checkedRevisions.map((revision) => revision.sha).toList();
+    List<String> shareMessage =
+        checkedRevisions.map((revision) => revision.sha).toList();
     Share.share(shareMessage.join(";"));
   }
 
