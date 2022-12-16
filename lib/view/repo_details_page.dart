@@ -33,8 +33,7 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
     super.initState();
     _ownerController = TextEditingController();
     _repoNameController = TextEditingController();
-    Repository repository = RepositoryProvider.of<Repository>(context);
-    _bloc = RepoDetailsBloc(repository);
+    _bloc = RepoDetailsBloc(RepositoryProvider.of<Repository>(context));
     if (widget.repoName?.isNotEmpty == true) {
       _bloc.add(LoadRepoEvent(repoName: widget.repoName!));
     } else {
