@@ -22,15 +22,17 @@ class _RepoDetailsState extends State<RepoDetailsPage> {
   List<Revision> checkedRevisions = [];
 
   @override
+  void dispose() {
+    _ownerController.dispose();
+    _repoNameController.dispose();
+    super.dispose();
+  }
+
+  @override
   void initState() {
     super.initState();
     _ownerController = TextEditingController();
     _repoNameController = TextEditingController();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
     Repository repository = RepositoryProvider.of<Repository>(context);
     _bloc = RepoDetailsBloc(repository);
     if (widget.repoName?.isNotEmpty == true) {
